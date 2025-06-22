@@ -1,0 +1,112 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  id: Int!
+  userName: String!
+  password: String!
+  fName: String!
+  lName: String!
+  isManager: Boolean!
+}
+
+type Author {
+  id: Int!
+  fName: String!
+  lName: String!
+  country: String!
+  city: String!
+  address: String!
+  books: [Book!]!
+}
+
+type Publisher {
+  id: Int!
+  pName: String!
+  city: String!
+  books: [Book!]!
+}
+
+type Book {
+  id: Int!
+  title: String!
+  type: String!
+  price: Float!
+  author: Author!
+  publisher: Publisher!
+}
+
+type Auth {
+  userName: String!
+  isManager: Boolean!
+}
+
+type Query {
+  user: [User!]!
+  book: [Book!]!
+  author: [Author!]!
+  publisher: [Publisher!]!
+}
+
+type Mutation {
+  createUser(createUserInput: CreateUserInput!): User!
+  createBook(createBookInput: CreateBookInput!): Book!
+  createComment(createCommentInput: CreateBookInput!): Book!
+  createAuthor(createAuthorInput: CreateAuthorInput!): Author!
+  updateAuthor(updateAuthorInput: UpdateAuthorInput!): Author!
+  removeAuthor(id: Int!): Author!
+  createPublisher(createPublisherInput: CreatePublisherInput!): Publisher!
+  updatePublisher(updatePublisherInput: UpdatePublisherInput!): Publisher!
+  removePublisher(id: Int!): Publisher!
+  createAuth(createAuthInput: CreateAuthInput!): Auth!
+}
+
+input CreateUserInput {
+  userName: String!
+  password: String!
+  fName: String!
+  lName: String!
+  isManager: Boolean!
+}
+
+input CreateBookInput {
+  title: String!
+  type: String!
+  price: Float!
+  authorId: Int!
+  pubId: Int!
+}
+
+input CreateAuthorInput {
+  fName: String!
+  lName: String!
+  country: String!
+  city: String!
+  address: String!
+}
+
+input UpdateAuthorInput {
+  fName: String
+  lName: String
+  country: String
+  city: String
+  address: String
+  id: Int!
+}
+
+input CreatePublisherInput {
+  pName: String!
+  city: String!
+}
+
+input UpdatePublisherInput {
+  pName: String
+  city: String
+  id: Int!
+}
+
+input CreateAuthInput {
+  userName: String!
+  password: String!
+}
