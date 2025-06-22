@@ -156,6 +156,10 @@ const config = {
         "fromEnvVar": null,
         "value": "windows",
         "native": true
+      },
+      {
+        "fromEnvVar": null,
+        "value": "debian-openssl-3.0.x"
       }
     ],
     "previewFeatures": [],
@@ -182,8 +186,8 @@ const config = {
       }
     }
   },
-  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"../generated/prisma\"\n}\n\ndatasource db {\n  provider = \"sqlite\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel User {\n  id        Int     @id @default(autoincrement())\n  userName  String  @unique\n  password  String\n  fName     String\n  lName     String\n  isManager Boolean\n}\n\nmodel Book {\n  id        Int       @id @default(autoincrement())\n  title     String    @unique\n  type      String\n  price     Float\n  authorId  Int\n  author    Author    @relation(fields: [authorId], references: [id])\n  pubId     Int\n  publisher Publisher @relation(fields: [pubId], references: [id])\n}\n\nmodel Author {\n  id      Int    @id @default(autoincrement())\n  fName   String\n  lName   String\n  country String\n  city    String\n  address String\n  Book    Book[]\n}\n\nmodel Publisher {\n  id    Int    @id @default(autoincrement())\n  pName String\n  city  String\n  Book  Book[]\n}\n",
-  "inlineSchemaHash": "9caac1e6f0e225218ddfbb92091f89d47590baaeef065b316fb8cb4ed03e1048",
+  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\ngenerator client {\n  provider      = \"prisma-client-js\"\n  binaryTargets = [\"native\", \"debian-openssl-3.0.x\"]\n  output        = \"../generated/prisma\"\n}\n\ndatasource db {\n  provider = \"sqlite\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel User {\n  id        Int     @id @default(autoincrement())\n  userName  String  @unique\n  password  String\n  fName     String\n  lName     String\n  isManager Boolean\n}\n\nmodel Book {\n  id        Int       @id @default(autoincrement())\n  title     String    @unique\n  type      String\n  price     Float\n  authorId  Int\n  author    Author    @relation(fields: [authorId], references: [id])\n  pubId     Int\n  publisher Publisher @relation(fields: [pubId], references: [id])\n}\n\nmodel Author {\n  id      Int    @id @default(autoincrement())\n  fName   String\n  lName   String\n  country String\n  city    String\n  address String\n  Book    Book[]\n}\n\nmodel Publisher {\n  id    Int    @id @default(autoincrement())\n  pName String\n  city  String\n  Book  Book[]\n}\n",
+  "inlineSchemaHash": "a9a0aa93ffbfa6e541f5c7c5ed51a2ed6b5741f9056b0ca94485bcf2d24feb90",
   "copyEngine": true
 }
 config.dirname = '/'
